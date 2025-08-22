@@ -7,9 +7,7 @@ from datetime import datetime, timedelta
 
 # relative yerine ABSOLUTE:
 
-from api.settings import DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD
-import os
-DB_SSLMODE = os.getenv("DB_SSLMODE", "require")  # Neon için 'require'
+from api.settings import DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD, DB_SSLMODE
 
 @contextmanager
 def get_conn():
