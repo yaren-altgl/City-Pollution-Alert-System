@@ -1,0 +1,48 @@
+# Kullanıcı ana dizin dosyaları
+.anaconda/
+.bash_history
+.cache/
+
+# Python cache & venv
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+venv/
+env/
+.venv/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Environment & secrets
+.env
+.env.local
+.env.production
+*.dump
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Data files (ham veya geçici dosyalar)
+data/*.csv
+data/*.json
+data/*.parquet
+*.db
+
+# Docker
+docker-compose.override.yml
+.docker/
+
+# Build / dist
+build/
+dist/
+*.egg-info/

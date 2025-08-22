@@ -1,0 +1,13 @@
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.ipynb
+data/*.csv
+data/*.parquet
+.git
+.gitignore
+.DS_Store
+Thumbs.db
+*.log
+.env

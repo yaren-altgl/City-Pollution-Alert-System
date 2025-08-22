@@ -1,0 +1,37 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:15
+    container_name: pollution_postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: pollution_user
+      POSTGRES_PASSWORD: pollution_pass
+      POSTGRES_DB: pollution_db
+    volumes:
+      - pollution_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pollution_user -d pollution_db"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build: .
+    container_name: pollution_api
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env          # .env'dekileri de yükle
+    environment:
+      DB_HOST: db     # ÖNEMLİ: konteyner içinden host adı 'db'
+    volumes:
+      - ./:/app
+    ports:
+      - "8000:8000"
+    command: uvicorn api.app:app --host 0.0.0.0 --port 8000 --reload
+
+volumes:
+  pollution_db_data:
